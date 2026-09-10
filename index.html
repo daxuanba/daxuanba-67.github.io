@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Get To Work - 在线玩</title>
+<meta name="description" content="Get To Work 网页版，打开即玩。">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Get To Work - 在线玩">
+<meta property="og:description" content="Get To Work 网页版，打开即玩。">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="icon" href="assets/favicon.ico">
+<style>
+  :root{
+    --bg:#000;
+    --panel:#0b0b0c;
+    --line:#1f1f22;
+    --text:#e8e8ea;
+    --sub:#8a8a90;
+    --accent:#f1c40f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);color:var(--text);
+    font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    overflow:hidden;-webkit-font-smoothing:antialiased}
+  #stage{position:fixed;inset:0;background:#000}
+  #game{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000}
+
+  #bar{position:fixed;top:0;left:0;right:0;height:44px;display:flex;align-items:center;
+    justify-content:space-between;padding:0 14px;background:rgba(10,10,11,.82);
+    border-bottom:1px solid var(--line);backdrop-filter:blur(8px);z-index:20}
+  #bar .title{font-size:14px;font-weight:700;letter-spacing:.5px}
+  #bar .title span{color:var(--sub);font-weight:400;margin-left:8px;font-size:12px}
+  #bar .ops{display:flex;gap:8px}
+  .btn{height:28px;padding:0 12px;font-size:12px;color:var(--text);background:#17171a;
+    border:1px solid var(--line);border-radius:6px;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#3a3a40;background:#202024}
+  .btn.primary{background:var(--accent);color:#14140c;border-color:var(--accent);font-weight:700}
+  .btn.primary:hover{filter:brightness(1.08)}
+
+  #loading{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:22px;
+    background:radial-gradient(120% 90% at 50% 20%,#141417 0%,#000 70%);
+    transition:opacity .45s ease}
+  #loading.hide{opacity:0;pointer-events:none}
+  #loading .logo{width:min(46vw,360px);border-radius:10px;box-shadow:0 18px 60px rgba(0,0,0,.7);
+    border:1px solid #22222a}
+  #loading .name{font-size:20px;font-weight:800;letter-spacing:1px}
+  .track{width:min(62vw,420px);height:4px;background:#1b1b1f;border-radius:99px;overflow:hidden}
+  .fill{height:100%;width:8%;background:var(--accent);border-radius:99px;
+    transition:width .3s ease;box-shadow:0 0 12px rgba(241,196,15,.5)}
+  #tip{font-size:12px;color:var(--sub);min-height:18px;text-align:center;padding:0 20px;line-height:1.7}
+  .spin{width:26px;height:26px;border:2px solid #26262c;border-top-color:var(--accent);
+    border-radius:50%;animation:r .8s linear infinite}
+  @keyframes r{to{transform:rotate(360deg)}}
+  #note{max-width:520px;font-size:12px;color:var(--sub);line-height:1.9;text-align:center;
+    border:1px solid var(--line);background:#0e0e11;border-radius:10px;padding:16px 18px;display:none}
+  #note b{color:var(--text)}
+  #note code{background:#191920;padding:1px 6px;border-radius:4px;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <iframe id="game" src="game/index.html" allow="autoplay;fullscreen;gamepad;xr-spatial-tracking"
+    allowfullscreen scrolling="no" title="Get To Work"></iframe>
+</div>
+
+<div id="bar">
+  <div class="title">GET TO WORK <span>网页版</span></div>
+  <div class="ops">
+    <button class="btn" id="btnReload">重载</button>
+    <button class="btn primary" id="btnFull">全屏</button>
+  </div>
+</div>
+
+<div id="loading">
+  <img class="logo" src="assets/header.jpg" alt="Get To Work">
+  <div class="name" id="pct">正在启动</div>
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="spin" id="spin"></div>
+  <div id="tip">正在加载游戏文件，请稍候…</div>
+  <div id="note"></div>
+</div>
+
+<script>
+(function () {
+  var iframe  = document.getElementById('game');
+  var loading = document.getElementById('loading');
+  var fill    = document.getElementById('fill');
+  var pct     = document.getElementById('pct');
+  var tip     = document.getElementById('tip');
+  var note    = document.getElementById('note');
+  var spin    = document.getElementById('spin');
+
+  var done = false;
+  var fake = 8;
+  var timer = setInterval(function () {
+    if (done) return;
+    fake = Math.min(fake + Math.random() * 3, 92);
+    setProgress(fake);
+  }, 260);
+
+  function setProgress(v) {
+    v = Math.max(0, Math.min(100, v));
+    fill.style.width = v + '%';
+    pct.textContent = v >= 100 ? '开始游戏' : ('加载中 ' + Math.round(v) + '%');
+  }
+
+  function finish() {
+    if (done) return;
+    done = true;
+    clearInterval(timer);
+    setProgress(100);
+    setTimeout(function () { loading.classList.add('hide'); }, 260);
+  }
+
+  // Unity 构建产物通过 postMessage 上报真实进度
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (!d || typeof d !== 'object') return;
+    if (d.type === 'unity-progress') {
+      setProgress(d.value * 100);
+      if (d.value >= 1) finish();
+    } else if (d.type === 'unity-ready') {
+      finish();
+    } else if (d.type === 'game-missing') {
+      clearInterval(timer);
+      spin.style.display = 'none';
+      pct.textContent = '游戏文件未部署';
+      tip.textContent = '';
+      note.style.display = 'block';
+      note.innerHTML = 'WebGL 构建产物尚未上传到 <code>game/</code> 目录。<br>' +
+        '把 Unity WebGL 打包结果（<b>Build/*.loader.js、*.data、*.framework.js、*.wasm</b> 与 <b>index.html</b>）' +
+        '放进本仓库根目录的 <code>game/</code> 即可直接开玩。';
+    }
+  });
+
+  iframe.addEventListener('load', function () {
+    setTimeout(finish, 400);
+  });
+
+  document.getElementById('btnFull').onclick = function () {
+    var el = document.documentElement;
+    if (!document.fullscreenElement) {
+      (el.requestFullscreen || el.webkitRequestFullscreen || function () {}).call(el);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen || function () {}).call(document);
+    }
+  };
+  document.getElementById('btnReload').onclick = function () {
+    loading.classList.remove('hide');
+    done = false; fake = 8; setProgress(8);
+    timer = setInterval(function () {
+      if (done) return;
+      fake = Math.min(fake + Math.random() * 3, 92);
+      setProgress(fake);
+    }, 260);
+    iframe.src = 'game/index.html?t=' + Date.now();
+  };
+
+  // 竖屏提示
+  function checkOrient() {
+    var portrait = window.innerHeight > window.innerWidth;
+    if (portrait && window.innerWidth < 820) {
+      tip.textContent = '建议横屏游玩，体验更佳';
+    }
+  }
+  window.addEventListener('resize', checkOrient);
+  checkOrient();
+})();
+</script>
+</body>
+</html>
