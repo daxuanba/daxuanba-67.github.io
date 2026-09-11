@@ -94,6 +94,7 @@
   var spin    = document.getElementById('spin');
 
   var done = false;
+  var gotMsg = false;
   var fake = 8;
   var timer = setInterval(function () {
     if (done) return;
@@ -119,25 +120,24 @@
   window.addEventListener('message', function (e) {
     var d = e.data;
     if (!d || typeof d !== 'object') return;
-    if (d.type === 'unity-progress') {
+    gotMsg = true;
+    if (d.type === 'unity-stage') {
+      if (d.text) tip.textContent = d.text;
+    } else if (d.type === 'unity-progress') {
       setProgress(d.value * 100);
       if (d.value >= 1) finish();
     } else if (d.type === 'unity-ready') {
       finish();
     } else if (d.type === 'game-missing') {
       clearInterval(timer);
-      spin.style.display = 'none';
-      pct.textContent = '游戏文件未部署';
-      tip.textContent = '';
-      note.style.display = 'block';
-      note.innerHTML = 'WebGL 构建产物尚未上传到 <code>game/</code> 目录。<br>' +
-        '把 Unity WebGL 打包结果（<b>Build/*.loader.js、*.data、*.framework.js、*.wasm</b> 与 <b>index.html</b>）' +
-        '放进本仓库根目录的 <code>game/</code> 即可直接开玩。';
+      // 没有 WebGL 构建：淡出加载层，露出 iframe 内的游戏启动器
+      setTimeout(function () { loading.classList.add('hide'); }, 350);
     }
   });
 
   iframe.addEventListener('load', function () {
-    setTimeout(finish, 400);
+    // 不再立即收工：游戏可能正在分片下载。只有完全收不到消息时才兜底淡出。
+    setTimeout(function () { if (!gotMsg) finish(); }, 3000);
   });
 
   document.getElementById('btnFull').onclick = function () {

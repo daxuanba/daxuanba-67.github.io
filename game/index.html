@@ -2,69 +2,159 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Get To Work</title>
+<link rel="icon" href="../assets/favicon.ico">
 <style>
+  :root{
+    --bg:#000; --text:#ececee; --sub:#8a8a90; --line:#222229;
+    --accent:#f1c40f; --card:#0c0c0f;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{width:100%;height:100%;background:#000;overflow:hidden;
-    font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:#e8e8ea}
-  #unity-container{position:absolute;inset:0;width:100%;height:100%}
-  #unity-canvas{width:100%;height:100%;background:#000;display:block;outline:none}
-  #msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;gap:14px;text-align:center;padding:24px;background:#08080a}
-  #msg h1{font-size:18px;font-weight:800;letter-spacing:1px}
-  #msg p{font-size:12px;color:#8a8a90;line-height:1.9;max-width:420px}
-  #msg code{background:#191920;padding:1px 6px;border-radius:4px;color:#f1c40f}
+  html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;color:var(--text);
+    font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased}
+
+  /* ===== Unity 运行区 ===== */
+  #unity-container{position:absolute;inset:0;display:none;background:#000}
+  #unity-canvas{width:100%;height:100%;display:block;outline:none;background:#000}
+
+  /* ===== 站点内进度条（分片下载时显示）===== */
+  #boot{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;
+    justify-content:center;gap:16px;background:radial-gradient(120% 90% at 50% 20%,#141417 0%,#000 70%);
+    z-index:5}
+  #boot.on{display:flex}
+  #boot .t{font-size:15px;font-weight:700;letter-spacing:.5px}
+  #boot .track{width:min(64vw,420px);height:4px;background:#1b1b1f;border-radius:99px;overflow:hidden}
+  #boot .fill{height:100%;width:2%;background:var(--accent);border-radius:99px;
+    transition:width .3s ease;box-shadow:0 0 12px rgba(241,196,15,.5)}
+  #boot .s{font-size:12px;color:var(--sub);text-align:center;padding:0 24px;line-height:1.8;min-height:16px}
+  #boot .spin{width:24px;height:24px;border:2px solid #26262c;border-top-color:var(--accent);
+    border-radius:50%;animation:r .8s linear infinite}
+  @keyframes r{to{transform:rotate(360deg)}}
+
+  /* ===== 启动器（无 WebGL 构建时显示）===== */
+  #launcher{position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.86)),
+      url(../assets/header.jpg) center/cover no-repeat;
+    padding:24px}
+  #launcher.on{display:flex}
+  #launcher .card{width:min(520px,92vw);background:rgba(10,10,12,.72);backdrop-filter:blur(14px);
+    border:1px solid var(--line);border-radius:16px;padding:26px 26px 24px;text-align:center;
+    box-shadow:0 24px 80px rgba(0,0,0,.6)}
+  #launcher .cover{width:100%;border-radius:10px;border:1px solid #2a2a31;display:block;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);aspect-ratio:460/215;object-fit:cover}
+  #launcher h1{margin:18px 0 4px;font-size:22px;font-weight:800;letter-spacing:1px}
+  #launcher .tag{font-size:12px;color:var(--sub);letter-spacing:2px;text-transform:uppercase}
+  #launcher p.desc{margin:12px 0 18px;font-size:13px;line-height:1.9;color:#b9b9c0}
+  .btns{display:flex;flex-direction:column;gap:10px}
+  .btn{height:46px;border-radius:10px;border:1px solid var(--line);font-size:15px;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
+    background:#141418;color:var(--text);transition:.15s;text-decoration:none}
+  .btn:hover{border-color:#3c3c44;background:#1b1b20}
+  .btn.primary{background:var(--accent);color:#14140c;border-color:var(--accent)}
+  .btn.primary:hover{filter:brightness(1.07)}
+  .btn .ar{font-size:13px;opacity:.8}
+  #launcher .note{margin-top:16px;font-size:11px;color:var(--sub);line-height:1.8}
+  #launcher .note code{background:#191920;padding:1px 6px;border-radius:4px;color:var(--accent)}
   .hide{display:none !important}
 </style>
 </head>
 <body>
+
+<!-- WebGL 运行容器 -->
 <div id="unity-container">
   <canvas id="unity-canvas" tabindex="-1"></canvas>
 </div>
 
-<div id="msg" class="hide">
-  <h1>游戏文件未部署</h1>
-  <p>WebGL 构建产物还没放到 <code>game/</code> 目录。<br>
-     放入 <code>Build/</code> 与 <code>build.json</code> 后刷新即可开玩。</p>
+<!-- 分片下载 / 引擎启动进度 -->
+<div id="boot" class="on">
+  <div class="t">GET TO WORK</div>
+  <div class="track"><div class="fill" id="bootFill"></div></div>
+  <div class="spin"></div>
+  <div class="s" id="bootStage">正在检查游戏资源…</div>
 </div>
 
+<!-- 启动器 -->
+<div id="launcher">
+  <div class="card">
+    <img class="cover" src="../assets/header.jpg" alt="Get To Work">
+    <div class="tag">Unity 6 · 独立游戏</div>
+    <h1>GET TO WORK</h1>
+    <p class="desc" id="launcherDesc">由 Unity 6000.0.35f1 打造。网页版资源未就绪，可先在本机开始游戏。</p>
+    <div class="btns">
+      <a class="btn primary" href="steam://run/2706170">
+        ▶ 本机启动游戏 <span class="ar">↗</span>
+      </a>
+      <a class="btn" href="https://store.steampowered.com/app/2706170/" target="_blank" rel="noopener">
+        Steam 商店页面 <span class="ar">↗</span>
+      </a>
+    </div>
+    <div class="note">
+      把 Unity WebGL 构建产物交给 <code>tools/split_package.py</code> 切成 &lt;95MB 分片后，
+      进入本页即自动下载、拼接、开玩，无需服务器。
+    </div>
+  </div>
+</div>
+
+<script src="unity-loader.js"></script>
 <script>
 (function () {
-  var post = function (obj) {
-    try { parent.postMessage(obj, '*'); } catch (e) {}
-  };
+  var post = function (obj) { try { parent.postMessage(obj, '*'); } catch (e) {} };
+  var container = document.getElementById('unity-container');
+  var launcher  = document.getElementById('launcher');
+  var boot      = document.getElementById('boot');
+  var bootFill  = document.getElementById('bootFill');
+  var bootStage = document.getElementById('bootStage');
 
-  function start(cfg) {
-    var canvas = document.getElementById('unity-canvas');
-    var s = document.createElement('script');
-    s.src = cfg.loaderUrl;
-    s.onload = function () {
-      createUnityInstance(canvas, cfg, function (v) {
-        post({ type: 'unity-progress', value: v });
-      }).then(function () {
-        post({ type: 'unity-progress', value: 1 });
-        post({ type: 'unity-ready' });
-        try { canvas.focus(); } catch (e) {}
-      }).catch(function (err) {
-        console.error(err);
-        post({ type: 'unity-error', message: String(err && err.message || err) });
-      });
-    };
-    s.onerror = function () {
-      document.getElementById('msg').classList.remove('hide');
-      post({ type: 'game-missing' });
-    };
-    document.body.appendChild(s);
+  function showLauncher(reason) {
+    boot.classList.remove('on');
+    container.style.display = 'none';
+    launcher.classList.add('on');
+    if (reason) {
+      document.getElementById('launcherDesc').textContent = reason;
+    }
+    post({ type: 'game-missing' });
   }
 
-  fetch('build.json', { cache: 'no-store' })
-    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-    .then(start)
-    .catch(function () {
-      document.getElementById('msg').classList.remove('hide');
-      post({ type: 'game-missing' });
+  function setStage(text) {
+    bootStage.textContent = text || '';
+    post({ type: 'unity-stage', text: text || '' });
+  }
+
+  function setProgress(v) {
+    bootFill.style.width = Math.max(2, Math.min(100, v * 100)) + '%';
+    post({ type: 'unity-progress', value: v });
+  }
+
+  function startUnity() {
+    launcher.classList.remove('on');
+    container.style.display = 'block';
+    var canvas = document.getElementById('unity-canvas');
+
+    window.GTW.boot({
+      canvas: canvas,
+      onStage: setStage,
+      onProgress: setProgress
+    }).then(function () {
+      boot.classList.remove('on');
+      try { canvas.focus(); } catch (e) {}
+      // 引擎已把资源读进内存，释放拼接用的 Blob
+      setTimeout(function () { window.GTW.releaseBlobs(); }, 20000);
+    }).catch(function (err) {
+      var msg = String((err && err.message) || err);
+      if (msg === 'no-manifest' || msg === 'bad-manifest') {
+        showLauncher('网页版资源尚未部署（game/build.json 不存在）。可先在本机开始游戏。');
+      } else {
+        console.error(err);
+        showLauncher('游戏启动失败：' + msg);
+        post({ type: 'unity-error', message: msg });
+      }
     });
+  }
+
+  startUnity();
 })();
 </script>
 </body>
