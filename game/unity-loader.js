@@ -105,18 +105,41 @@
     });
   }
 
-  /** Download every part of a manifest entry (in order) and return one Blob. */
+  /** Download every part of a manifest entry and return one Blob.
+   *  Parts are fetched IN PARALLEL (8-way) and stitched in order —
+   *  sequential part downloads were the biggest boot bottleneck. */
   function assemble(entry, onBytes) {
     var parts = entry.parts || [];
     if (parts.length === 1) {
       return fetchBlob(resolveUrl(parts[0].url), onBytes);
     }
-    var pieces = [];
-    return parts.reduce(function (chain, p) {
-      return chain.then(function () {
-        return fetchBlob(resolveUrl(p.url), onBytes);
-      }).then(function (blob) { pieces.push(blob); });
-    }, Promise.resolve()).then(function () {
+    var pieces = new Array(parts.length);
+    var loaded = new Array(parts.length);
+    for (var i = 0; i < parts.length; i++) loaded[i] = 0;
+    function report() {
+      if (!onBytes) return;
+      var sum = 0;
+      for (var i = 0; i < loaded.length; i++) sum += loaded[i];
+      onBytes(sum);
+    }
+    var CONC = 8;
+    var next = 0;
+    function worker() {
+      return Promise.resolve().then(function loop() {
+        if (next >= parts.length) return null;
+        var idx = next++;
+        return fetchBlob(resolveUrl(parts[idx].url), function (n) {
+          loaded[idx] = n;
+          report();
+        }).then(function (blob) {
+          pieces[idx] = blob;
+          return loop();
+        });
+      });
+    }
+    var workers = [];
+    for (var w = 0; w < Math.min(CONC, parts.length); w++) workers.push(worker());
+    return Promise.all(workers).then(function () {
       return new Blob(pieces, { type: entry.type || 'application/octet-stream' });
     });
   }
@@ -270,30 +293,33 @@
     } catch (e) {}
   }
 
-  /** Pre-assemble the four core artefacts (they are needed immediately). */
+  /** Pre-assemble the four core artefacts (they are needed immediately).
+   *  All artefacts download IN PARALLEL — serial chaining wasted most of
+   *  the boot time. */
   function prepareCore(manifest, onStage, onProgress) {
     var files = (manifest.files || []).filter(function (f) {
       return f.parts && f.parts.length > 1 && !/^build\/StreamingAssets\//.test(f.path);
     });
     var totalBytes = files.reduce(function (n, f) { return n + f.size; }, 0);
-    var loaded = 0;
-    var map = {};
-    var blobUrls = [];
+    var perFile = {};   // path -> loaded bytes
+    function report(path, n) {
+      perFile[path] = n;
+      if (!totalBytes) return;
+      var sum = 0;
+      for (var k in perFile) sum += perFile[k];
+      onProgress && onProgress(Math.min(0.85, 0.85 * sum / totalBytes));
+    }
 
-    return files.reduce(function (chain, f) {
-      return chain.then(function () {
-        onStage && onStage('正在下载 ' + shortName(f.path) + ' …');
-        return assemble(f, function (n) {
-          loaded += n;
-          if (totalBytes) onProgress && onProgress(Math.min(0.85, 0.85 * loaded / totalBytes));
-        }).then(function (blob) {
-          var url = URL.createObjectURL(blob);
-          blobUrls.push(url);
-          map[f.path] = url;
-        });
+    return Promise.all(files.map(function (f) {
+      return assemble(f, function (n) { report(f.path, n); }).then(function (blob) {
+        var url = URL.createObjectURL(blob);
+        state.blobUrls.push(url);
+        return [f.path, url];
       });
-    }, Promise.resolve()).then(function () {
-      return { map: map, blobUrls: blobUrls };
+    })).then(function (pairs) {
+      var map = {};
+      pairs.forEach(function (p) { map[p[0]] = p[1]; });
+      return { map: map };
     });
   }
 
@@ -321,7 +347,7 @@
       if (state.running) return Promise.resolve();
       state.running = true;
 
-      return (origFetch ? origFetch(MANIFEST, { cache: 'no-store' }) : Promise.reject(new Error('fetch unsupported')))
+      return (origFetch ? origFetch(MANIFEST, { cache: 'default' }) : Promise.reject(new Error('fetch unsupported')))
         .then(function (r) {
           if (!r.ok) throw new Error('no-manifest');
           return r.json();
