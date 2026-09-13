@@ -183,10 +183,15 @@ BUILTIN_MODULES = [
     "com.unity.modules.xr",
 ]
 
-# 真正无法在 WebGL 加载的**原生二进制**（不是托管 DLL）→ 移出工程。
-# 注意：托管 DLL（Rewired_Windows / Unity.Microsoft.GDK / steamworks.net / _Isto.Core.Xbox）
-# 一律**保留**——它们只是托管代码，能正常编译；只有在运行时才可能因缺原生库而报错。
-# 贸然移除会导致反编译代码编译失败（实测：XBoxGameData.cs 依赖 Isto.Core.Platforms.Xbox）。
+# 无法在 WebGL 加载的 Windows/Xbox 专属程序集（原生二进制 + 个别托管特例）→ 移出工程。
+# 多数托管 DLL（Unity.Microsoft.GDK / steamworks.net / _Isto.Core.Xbox）一律**保留**——
+# 它们只是托管代码，能正常编译，且反编译代码会静态引用（实测：XBoxGameData.cs 依赖
+# Isto.Core.Platforms.Xbox），贸然移除会编译失败。
+# **例外：Rewired_Windows.dll**。它是 Rewired 的 Windows 平台输入后端，含大量 user32/
+# XInput/DirectInput 的 P/Invoke 与 Windows 专有接口元数据。Cecil 能解析、Unity 能编译，
+# 但其元数据会让 il2cpp 的 ClassRegistrationGenerator 在 AOT 注册阶段抛
+# NullReferenceException（见 build_run6/7 日志）。refscan 已确认 0 个程序集静态引用它，
+# WebGL 上 Rewired 走 Unity 输入后端，排除它安全且必要。
 NATIVE_WINDOWS_ONLY = [
     "steam_api64.dll",
     "steam_api.dll",
@@ -197,8 +202,13 @@ NATIVE_WINDOWS_ONLY = [
     "Rewired_StandaloneWindows.dll",
 ]
 
+# 托管 DLL 特例：见上方说明，仅 Rewired_Windows.dll（0 引用、il2cpp 注册崩溃元凶）。
+MANAGED_WINDOWS_ONLY = [
+    "Rewired_Windows.dll",
+]
+
 # 兼容旧名
-WINDOWS_ONLY_DLLS = NATIVE_WINDOWS_ONLY
+WINDOWS_ONLY_DLLS = NATIVE_WINDOWS_ONLY + MANAGED_WINDOWS_ONLY
 
 
 # ------------------------------------------------------------------ 版本解析

@@ -6,11 +6,14 @@ site at 1 GB, so a Unity WebGL build has to be chopped into pieces.  This script
 
   1. copies the Unity build output into  <site>/game/build/
   2. splits every file larger than --part-size into  <file>.part000  chunks
+     (this includes StreamingAssets — Addressables bundles are routinely
+     100-220 MB each, and MUST be split or `git push` is rejected)
   3. writes  <site>/game/build.json  describing the whole layout
 
 game/unity-loader.js then downloads every chunk, stitches the pieces back
-together in memory and hands them to Unity, so the game boots directly from
-the static site with no server-side logic.
+together in memory and hands them to Unity — including the StreamingAssets
+bundles, which it serves through a fetch/XHR interceptor so the engine never
+sees the split files.
 
 Usage:
     python tools/split_package.py --build "D:/Build_WebGL" --site .
@@ -25,18 +28,24 @@ import shutil
 import sys
 from pathlib import Path
 
-PART_FMT = ".part{:03d}"
+# Shards keep a ".bin" tail on purpose: some CDNs (jsDelivr) key their
+# content-type / serving rules off the extension, and a bare ".part000" is
+# treated as an unknown extension.  ".bin" always serves as octet-stream.
+PART_FMT = ".part{:03d}.bin"
 
 # Unity emits these four artefacts; map filename suffix -> config key.
 # Longer suffixes must be tested first (.data.br before .data).
 SUFFIX_MAP = [
+    (".framework.js.unityweb", "frameworkUrl"),
     (".framework.js.br", "frameworkUrl"),
     (".framework.js.gz", "frameworkUrl"),
     (".framework.js", "frameworkUrl"),
     (".loader.js", "loaderUrl"),
+    (".wasm.unityweb", "codeUrl"),
     (".wasm.br", "codeUrl"),
     (".wasm.gz", "codeUrl"),
     (".wasm", "codeUrl"),
+    (".data.unityweb", "dataUrl"),
     (".data.br", "dataUrl"),
     (".data.gz", "dataUrl"),
     (".data", "dataUrl"),
@@ -49,8 +58,17 @@ MIME = {
     "codeUrl": "application/wasm",
 }
 
+# Addressables bundles / FMOD banks — anything the engine pulls itself.
+STREAMING_ASSET_EXT = {
+    ".bundle": "application/octet-stream",
+    ".bank": "application/octet-stream",
+    ".bin": "application/octet-stream",
+    ".json": "application/json",
+    ".hash": "application/octet-stream",
+}
 
-def human(n: int) -> str:
+
+def human(n: float) -> str:
     for unit in ("B", "KB", "MB", "GB"):
         if n < 1024 or unit == "GB":
             return f"{n:.1f} {unit}" if unit != "B" else f"{n} B"
@@ -64,6 +82,12 @@ def sha256_of(path: Path, buf_size: int = 1 << 20) -> str:
         for chunk in iter(lambda: fh.read(buf_size), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def _dest_for(out_dir: Path, manifest_rel: str) -> Path:
+    """manifest_rel -> physical path under out_dir (drops a leading 'build/')."""
+    rel = manifest_rel[6:] if manifest_rel.startswith("build/") else manifest_rel
+    return out_dir / rel
 
 
 def detect_unity(build_dir: Path) -> dict:
@@ -86,21 +110,21 @@ def detect_unity(build_dir: Path) -> dict:
     return {k: v for k, v in found.items()}
 
 
-def split_file(src: Path, out_dir: Path, manifest_rel: str, part_size: int) -> dict:
+def split_file(src: Path, out_dir: Path, manifest_rel: str, part_size: int,
+               mime: str | None = None) -> dict:
     """Copy <src> into out_dir (or split it) and return its manifest entry.
 
-    out_dir       -> <site>/game/build        (where bytes physically land)
-    manifest_rel  -> "build/<name>"           (path the browser will request)
+    manifest_rel -> "build/<sub/path>/<name>"  (path the browser requests)
     """
-    name = manifest_rel.split("/")[-1]
     size = src.stat().st_size
-    dest = out_dir / name
+    dest = _dest_for(out_dir, manifest_rel)
     dest.parent.mkdir(parents=True, exist_ok=True)
 
     entry = {
         "path": manifest_rel,
         "size": size,
         "sha256": sha256_of(src),
+        "type": mime or "application/octet-stream",
         "parts": None,
     }
 
@@ -117,9 +141,12 @@ def split_file(src: Path, out_dir: Path, manifest_rel: str, part_size: int) -> d
             chunk = fh.read(part_size)
             if not chunk:
                 break
-            part_name = name + PART_FMT.format(idx)
-            (out_dir / part_name).write_bytes(chunk)
-            parts.append({"url": "build/" + part_name, "size": len(chunk)})
+            part_name = dest.name + PART_FMT.format(idx)
+            (dest.parent / part_name).write_bytes(chunk)
+            parts.append({
+                "url": manifest_rel + PART_FMT.format(idx),
+                "size": len(chunk),
+            })
             idx += 1
     entry["parts"] = parts
     return entry
@@ -131,6 +158,10 @@ def main() -> int:
     ap.add_argument("--site", default=".", help="repo root that holds game/ (default: .)")
     ap.add_argument("--part-size", type=int, default=95,
                     help="max size of one part in MB (default 95, GitHub limit is 100)")
+    ap.add_argument("--data-base", default="",
+                    help="prefix for part URLs, e.g. "
+                         "https://raw.githubusercontent.com/<user>/<repo>/master/ "
+                         "(empty => serve parts from the same origin)")
     ap.add_argument("--company", default="Isto")
     ap.add_argument("--product", default="Get To Work")
     ap.add_argument("--version", default="1.0")
@@ -153,7 +184,6 @@ def main() -> int:
     for key, path in unity.items():
         print(f"    {key:14} {path.name}  ({human(path.stat().st_size)})")
 
-    # Unity config keys are relative to game/build.json -> prefix with build/
     config = {
         "companyName": args.company,
         "productName": args.product,
@@ -162,41 +192,48 @@ def main() -> int:
     }
 
     entries = []
-    copied_any = False
     for key, path in unity.items():
         rel = "build/" + path.name
-        entry = split_file(path, out_dir, rel, part_size)
+        entry = split_file(path, out_dir, rel, part_size, MIME.get(key))
         entries.append(entry)
         config[key] = rel
-        copied_any = True
-        n = len(entry["parts"] or [])
-        flag = f"切成 {n} 片" if n > 1 else "单文件"
-        print(f"[+] {rel}  -> {flag}")
+        n = len(entry["parts"])
+        print(f"[+] {rel}  -> {'切成 %d 片' % n if n > 1 else '单文件'}")
 
-    # StreamingAssets (loose files) - kept as-is, must stay under the limits.
+    # ---- StreamingAssets -----------------------------------------------------
+    # Addressables bundles land here (build/StreamingAssets/aa/WebGL/*.bundle) and
+    # are far over GitHub's 100 MB file limit, so they get split like everything
+    # else.  unity-loader.js intercepts the engine's requests for these paths and
+    # serves the stitched Blob instead.
     sa_src = None
     for cand in (build_dir / "StreamingAssets", build_dir.parent / "StreamingAssets",
                  build_dir / "Build" / "StreamingAssets"):
         if cand.is_dir():
             sa_src = cand
             break
-    if sa_src:
-        dst = out_dir / "StreamingAssets"
-        shutil.copytree(sa_src, dst, dirs_exist_ok=True)
-        config["streamingAssetsUrl"] = "build/StreamingAssets"
-        print(f"[+] StreamingAssets -> {sum(1 for _ in dst.rglob('*') if _.is_file())} 个文件")
-        oversize = [p for p in dst.rglob("*") if p.is_file() and p.stat().st_size > part_size]
-        if oversize:
-            print(f"[!] 警告: StreamingAssets 里有 {len(oversize)} 个文件超过分片阈值，"
-                  f"Pages 上传会失败（{oversize[0].name} …）")
 
-    if not copied_any:
+    sa_files = []
+    if sa_src:
+        all_files = sorted(p for p in sa_src.rglob("*") if p.is_file())
+        for p in all_files:
+            rel_path = p.relative_to(sa_src).as_posix()
+            manifest_rel = "build/StreamingAssets/" + rel_path
+            mime = STREAMING_ASSET_EXT.get(p.suffix.lower(), "application/octet-stream")
+            entry = split_file(p, out_dir, manifest_rel, part_size, mime)
+            entries.append(entry)
+            sa_files.append(entry)
+        config["streamingAssetsUrl"] = "build/StreamingAssets"
+        big = sum(1 for e in sa_files if len(e["parts"]) > 1)
+        print(f"[+] StreamingAssets -> {len(sa_files)} 个文件（其中 {big} 个被分片）")
+
+    if not entries:
         raise SystemExit("[x] 没有可复制的 Unity 产物")
 
     manifest = {
         "mode": "webgl",
         "generated_by": "tools/split_package.py",
         "partSize": part_size,
+        "dataBase": args.data_base or "",
         "unity": config,
         "files": entries,
         "totalBytes": sum(e["size"] for e in entries),
@@ -206,10 +243,10 @@ def main() -> int:
 
     total_parts = sum(len(e["parts"] or []) for e in entries)
     print(f"[=] build.json 已生成: {manifest_path}")
-    print(f"[=] 总大小 {human(manifest['totalBytes'])}，共 {total_parts} 个文件（含分片）")
+    print(f"[=] 原始内容 {human(manifest['totalBytes'])}，实际落盘 {total_parts} 个文件（含分片）")
     if manifest["totalBytes"] > 1024 ** 3:
         print("[!] 注意: 构建体积超过 GitHub Pages 的 1 GB 站点软上限，"
-              "Pages 可能拒绝发布；建议改用本地服务或对象存储。")
+              "Pages 可能拒绝发布；建议改用对象存储或 GitHub Releases。")
     return 0
 
 

@@ -62,14 +62,15 @@ public static class GTWAddressables
     [MenuItem("GTW/2. Build Addressables Content")]
     public static void BuildContent()
     {
-        AddressableAssetSettings.BuildPlayerContent(out AddressablesPlayerBuildResult result);
-        if (!string.IsNullOrEmpty(result.Error))
+        AddressablesPlayerBuildResult result;
+        AddressableAssetSettings.BuildPlayerContent(out result);
+        if (result != null && !string.IsNullOrEmpty(result.Error))
         {
             Debug.LogError("[GTW] Addressables 构建失败: " + result.Error);
             if (Application.isBatchMode) EditorApplication.Exit(1);
             return;
         }
-        Debug.Log("[GTW] Addressables 构建完成，产物: " + result.OutputPath);
+        Debug.Log("[GTW] Addressables 构建完成，耗时 " + (result != null ? result.Duration.ToString("F1") : "?") + "s");
     }
 
     /// <summary>批处理入口：切 WebGL → 建组 → 打包。</summary>

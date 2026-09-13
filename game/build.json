@@ -1,0 +1,1203 @@
+{
+  "mode": "webgl",
+  "generated_by": "tools/split_package.py",
+  "partSize": 99614720,
+  "dataBase": "",
+  "unity": {
+    "companyName": "Isto",
+    "productName": "Get To Work",
+    "productVersion": "1.0",
+    "streamingAssetsUrl": "build/StreamingAssets",
+    "dataUrl": "build/WebGL.data.unityweb",
+    "frameworkUrl": "build/WebGL.framework.js.unityweb",
+    "loaderUrl": "build/WebGL.loader.js",
+    "codeUrl": "build/WebGL.wasm.unityweb"
+  },
+  "files": [
+    {
+      "path": "build/WebGL.data.unityweb",
+      "size": 198244921,
+      "sha256": "8849885e48c2c23cb42e5832933d65d2e451646ad86fa457dc264a30899ffd94",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/WebGL.data.unityweb.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/WebGL.data.unityweb.part001.bin",
+          "size": 98630201
+        }
+      ]
+    },
+    {
+      "path": "build/WebGL.framework.js.unityweb",
+      "size": 130952,
+      "sha256": "6dbb9ae39b19156b4196b12d2cc4634ea9e44b106d5b190000e28fb8fe945778",
+      "type": "text/javascript",
+      "parts": [
+        {
+          "url": "build/WebGL.framework.js.unityweb",
+          "size": 130952
+        }
+      ]
+    },
+    {
+      "path": "build/WebGL.loader.js",
+      "size": 117494,
+      "sha256": "3024bcb712fd24999cae2daff57ecc2488a8e957780356b8b59aa3bf8c44ef64",
+      "type": "text/javascript",
+      "parts": [
+        {
+          "url": "build/WebGL.loader.js",
+          "size": 117494
+        }
+      ]
+    },
+    {
+      "path": "build/WebGL.wasm.unityweb",
+      "size": 11755902,
+      "sha256": "54c110ed0a6981678315d5493bcdfd2f7950aeedd321c6651d412af7bb7921c6",
+      "type": "application/wasm",
+      "parts": [
+        {
+          "url": "build/WebGL.wasm.unityweb",
+          "size": 11755902
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/AddressablesLink/link.xml",
+      "size": 33606,
+      "sha256": "c61c687d9329d0f328d4b2156bd14430809f2fef838adfa90a239bb0984403d1",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/AddressablesLink/link.xml",
+          "size": 33606
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/catalog.bin",
+      "size": 42038,
+      "sha256": "a636ae702341258bfd54c466db0d82a392afb338a889441c2350d9764faeb814",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/catalog.bin",
+          "size": 42038
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/catalog.hash",
+      "size": 32,
+      "sha256": "e74fe171bafa5f566b9ffe5e485e64e66df20d62affd21e88a1cf517aacb92c8",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/catalog.hash",
+          "size": 32
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/settings.json",
+      "size": 850,
+      "sha256": "f991537bfd502cb1eaf213af1167aad8483a29d823db52831fb694c5c7e6c220",
+      "type": "application/json",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/settings.json",
+          "size": 850
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/cf1fd25e771d52098d1bacfb793670d7_monoscripts_407ee2c2ecf6d4c1d7267b45ef5e1780.bundle",
+      "size": 14065,
+      "sha256": "a48301132e2fa0a7cddc178644d5e6ff2ad96ad79bd6ca68263f8a447cf91cad",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/cf1fd25e771d52098d1bacfb793670d7_monoscripts_407ee2c2ecf6d4c1d7267b45ef5e1780.bundle",
+          "size": 14065
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/cf1fd25e771d52098d1bacfb793670d7_unitybuiltinassets_80325ef55f432c4955b2a6299d584f43.bundle",
+      "size": 942320,
+      "sha256": "ceb2d117a679e896ade54e4b8eb0abf710b2165b596de9c4fdc8d02b0ed8c697",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/cf1fd25e771d52098d1bacfb793670d7_unitybuiltinassets_80325ef55f432c4955b2a6299d584f43.bundle",
+          "size": 942320
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_1-applicationstartup_4dd960971e8898a4e29b720f194d6c11.bundle",
+      "size": 1382179,
+      "sha256": "1c670af8fb1009c308cb8ca23872a4a2da1725369666d89494263c4d4127f389",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_1-applicationstartup_4dd960971e8898a4e29b720f194d6c11.bundle",
+          "size": 1382179
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_2-titlescreen_f50852df47658f37b747c99f11203fb9.bundle",
+      "size": 95968970,
+      "sha256": "8a34b52b182cb2bb10240ff132839015d73836c72158c267476728dc78da1e07",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_2-titlescreen_f50852df47658f37b747c99f11203fb9.bundle",
+          "size": 95968970
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_3-loading_ff709a05ddfa8fa49f83aae5f49d21f4.bundle",
+      "size": 1981042,
+      "sha256": "3039867939f37ca313ef3c1046bd1774b05cc11347e954c5b9ccfb651575385a",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_3-loading_ff709a05ddfa8fa49f83aae5f49d21f4.bundle",
+          "size": 1981042
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_00_easy1_57664f90cef0503e7da17d0ec91d432e.bundle",
+      "size": 179818,
+      "sha256": "69b9ca1b317176205c4f61265b4b82d11f41f94e56965731e12f0c964796cf8a",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_00_easy1_57664f90cef0503e7da17d0ec91d432e.bundle",
+          "size": 179818
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_00_easy2_33cb78f3f118d26e8d36a3dbaa042ff6.bundle",
+      "size": 95356,
+      "sha256": "43e7da3e382a4e8dde83bf6ed124685e41ff768672f6a0a83fdfdeeb248f2db7",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_00_easy2_33cb78f3f118d26e8d36a3dbaa042ff6.bundle",
+          "size": 95356
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_01_flowjumps1_6eabed1ed9cbb29a686bf66e0a8abde9.bundle",
+      "size": 130921,
+      "sha256": "851ec0c4374c5d282c3bd089978352c05d6eba6f281315d289af862df560a4f1",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_01_flowjumps1_6eabed1ed9cbb29a686bf66e0a8abde9.bundle",
+          "size": 130921
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_01_flowjumps2_15450c353851065918b290a66a45d54f.bundle",
+      "size": 116189,
+      "sha256": "495ad9e809e9c2eb030bfba34341e9a2b3f04e7096848e78eafe9ea3153faf59",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_01_flowjumps2_15450c353851065918b290a66a45d54f.bundle",
+          "size": 116189
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_01_flowjumps3_96a6f2e40123cb5bce5a8fdf6401b52f.bundle",
+      "size": 149459,
+      "sha256": "5bdc9a3db9c3abb31a94eaa17e65a7aa765151ce87e24450fadd8efb626ffd0c",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_01_flowjumps3_96a6f2e40123cb5bce5a8fdf6401b52f.bundle",
+          "size": 149459
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_02_bigdive_203619cb1d65788ba79213cee65f0d9f.bundle",
+      "size": 258578,
+      "sha256": "3ceff38c640ca68f7b598f553506e3cb92adb5000be1e367b447f6acd0fe73eb",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_02_bigdive_203619cb1d65788ba79213cee65f0d9f.bundle",
+          "size": 258578
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_03_flow_hard1_871e92c30c9ccb89f6ab8777b40fb83e.bundle",
+      "size": 183090,
+      "sha256": "56daa473178b8bd5ba37f48b8471da1dc8467e1efb5e7dd79b471c34db2e99eb",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_03_flow_hard1_871e92c30c9ccb89f6ab8777b40fb83e.bundle",
+          "size": 183090
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_03_flow_hard2_4de98b3976bae8693ec471ba49cccf2b.bundle",
+      "size": 110340,
+      "sha256": "4710110f47a0599e37c81c601972450c860fe5b0bc4b288bd2779e93219f32e2",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_03_flow_hard2_4de98b3976bae8693ec471ba49cccf2b.bundle",
+          "size": 110340
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_04_threepillars_d06be6223befe9f7a438ba37f2002461.bundle",
+      "size": 4502343,
+      "sha256": "1ce84dea8ac242d3fe371fda67c1181f75f4f775fc2eac56ff27bd98b44af8b3",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_01_04_threepillars_d06be6223befe9f7a438ba37f2002461.bundle",
+          "size": 4502343
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_00_easyjump_ad1adfa64c4b24c24fb3b5bdb362fb1e.bundle",
+      "size": 188120,
+      "sha256": "87c031b23d0951f3ac4d229e35584fefedcc6dbc3daebd0c460628c642ba7499",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_00_easyjump_ad1adfa64c4b24c24fb3b5bdb362fb1e.bundle",
+          "size": 188120
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_01_4floorseasy_89089ed3dcff5c4289c3154bff42cdab.bundle",
+      "size": 180229,
+      "sha256": "182ee52b2a56dfd7db92a5b92ec4d8a2ebaf71cbe441a8ddf5354aede35e1028",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_01_4floorseasy_89089ed3dcff5c4289c3154bff42cdab.bundle",
+          "size": 180229
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_02_halfpipe_idea_3d8c9f7088fd093ef158077191d36587.bundle",
+      "size": 193105,
+      "sha256": "eb4e4eed77ec740fa0487fe6247512ad4ab11d848337e7f9c5ec75af56c0900a",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_02_halfpipe_idea_3d8c9f7088fd093ef158077191d36587.bundle",
+          "size": 193105
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_03_4floorshard_23ac79c74911a5ffb2fca086f01d7e46.bundle",
+      "size": 318120,
+      "sha256": "18bac00bebad2b386ba0d36ad7bab9ce18cc97f435874843d33e5adbe3805d6c",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_03_4floorshard_23ac79c74911a5ffb2fca086f01d7e46.bundle",
+          "size": 318120
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_05_bermclimb_easier_da31fb5195449cc9bd3c2d0f492c285f.bundle",
+      "size": 484997,
+      "sha256": "f12d35667784cb800452af1a4d7fda517d632b3a77b05232f6e6d6a4cd5cced8",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_05_bermclimb_easier_da31fb5195449cc9bd3c2d0f492c285f.bundle",
+          "size": 484997
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_06_bermclimb_b957a07b00a48e2ca89f9fb8b01bfcab.bundle",
+      "size": 169751,
+      "sha256": "bccb02013ef9f5f5d3a91d4a99435f3ac55cef9413d361ea02a5909d0779c618",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_06_bermclimb_b957a07b00a48e2ca89f9fb8b01bfcab.bundle",
+          "size": 169751
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_07_wavylongramp_f79a16689ab73e725b02be366e8f8cdb.bundle",
+      "size": 147803,
+      "sha256": "f685a7d0461f7635d50d320dee9c7c10ca005c88300e8392b7f10d948d6b8f61",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_doink_section_02_07_wavylongramp_f79a16689ab73e725b02be366e8f8cdb.bundle",
+          "size": 147803
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_81dbf2166dfbfe12114bb16e5502108b.bundle",
+      "size": 7186537,
+      "sha256": "a9955cec33a1d1cbdcca9c25d01112b5f79db76a2fcde8b70b90e5519a548460",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_81dbf2166dfbfe12114bb16e5502108b.bundle",
+          "size": 7186537
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_lighting_e41f3ac50e9294dfbaaf14fb01f23954.bundle",
+      "size": 6760350,
+      "sha256": "9f061d78196255dfa56b6f2885f698344e5c9c72d41ffa179541669d464a6456",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_lighting_e41f3ac50e9294dfbaaf14fb01f23954.bundle",
+          "size": 6760350
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-00-bedroom_acd315ec36ee0c1b2ae0124ea0e9865b.bundle",
+      "size": 533037764,
+      "sha256": "2e57aec96daffcf5ebf1abd082cd81047d958f3efa50d7c8213e0ee59e823e15",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-00-bedroom_acd315ec36ee0c1b2ae0124ea0e9865b.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-00-bedroom_acd315ec36ee0c1b2ae0124ea0e9865b.bundle.part001.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-00-bedroom_acd315ec36ee0c1b2ae0124ea0e9865b.bundle.part002.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-00-bedroom_acd315ec36ee0c1b2ae0124ea0e9865b.bundle.part003.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-00-bedroom_acd315ec36ee0c1b2ae0124ea0e9865b.bundle.part004.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-00-bedroom_acd315ec36ee0c1b2ae0124ea0e9865b.bundle.part005.bin",
+          "size": 34964164
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-01-parkade_b5f8b30b7411559c713625ec338dbd89.bundle",
+      "size": 163672714,
+      "sha256": "053e3b2c59cfae620e77e3d8479f2aed529a3ebd31479052df0210e29f2c5eb4",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-01-parkade_b5f8b30b7411559c713625ec338dbd89.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_00-01-parkade_b5f8b30b7411559c713625ec338dbd89.bundle.part001.bin",
+          "size": 64057994
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_01-00-pendulums_da73d819b7a609e45db88967f63b8425.bundle",
+      "size": 202141070,
+      "sha256": "98a62577eed28b3384f96b36e33ce90d5284df38906f57ee8cfaf8258f5c16eb",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_01-00-pendulums_da73d819b7a609e45db88967f63b8425.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_01-00-pendulums_da73d819b7a609e45db88967f63b8425.bundle.part001.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_01-00-pendulums_da73d819b7a609e45db88967f63b8425.bundle.part002.bin",
+          "size": 2911630
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_01-01-bigdrop_9bb98f620f118662ce70887106e7ab77.bundle",
+      "size": 120587063,
+      "sha256": "c344215e3d4e6597c850098d372feb8126a45d7bad3a951fd1ac661aa70b3351",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_01-01-bigdrop_9bb98f620f118662ce70887106e7ab77.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_01-01-bigdrop_9bb98f620f118662ce70887106e7ab77.bundle.part001.bin",
+          "size": 20972343
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle",
+      "size": 620466265,
+      "sha256": "14a7d21c6a8ee8581e2a65dc7b7d9638ab49bdfe231ece173f9837af79049aba",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle.part001.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle.part002.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle.part003.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle.part004.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle.part005.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_02-00-aircontroltutorial1_6a0cf992a8a8f0bb40de9dfc096b1929.bundle.part006.bin",
+          "size": 22777945
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-00-warehousetransition_e674304f7486e5af7ce1ecd5dc933c81.bundle",
+      "size": 92505213,
+      "sha256": "5c8df66699124518e5a69af59752bbe102be1ee37e64c71ac606186c71b4b36d",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-00-warehousetransition_e674304f7486e5af7ce1ecd5dc933c81.bundle",
+          "size": 92505213
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-01-slingshots_b262e1cc8049be3dd64d15d72b482171.bundle",
+      "size": 177914882,
+      "sha256": "16d4d500de741abf207c6e6c7be7a982c225d85e32eadf1d47a56841c3359791",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-01-slingshots_b262e1cc8049be3dd64d15d72b482171.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-01-slingshots_b262e1cc8049be3dd64d15d72b482171.bundle.part001.bin",
+          "size": 78300162
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-02-aframes_bad35fcc3c31a812ceffe40d4051bfcc.bundle",
+      "size": 118549612,
+      "sha256": "b5c9d226aff54aea442bf3f44402cf47d7986282876c78c331f6c500698ba29a",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-02-aframes_bad35fcc3c31a812ceffe40d4051bfcc.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-02-aframes_bad35fcc3c31a812ceffe40d4051bfcc.bundle.part001.bin",
+          "size": 18934892
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-03-easyflowjumps_0489c2b0a96fa16e145afd2b23ba493f.bundle",
+      "size": 84533868,
+      "sha256": "4a326e284f207f040a306f0168a7aa2eedce56c72319204c6699e07805e4b272",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_03-03-easyflowjumps_0489c2b0a96fa16e145afd2b23ba493f.bundle",
+          "size": 84533868
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_04-00-transitionsection_e00e9689380bd5e98cf5e2e456db0ae9.bundle",
+      "size": 54364394,
+      "sha256": "1d516bc01270e4967f2648e0622fc5ae4f466137744da94fe243b66e8221f5d9",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_04-00-transitionsection_e00e9689380bd5e98cf5e2e456db0ae9.bundle",
+          "size": 54364394
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_04-01-aircontroltutorial2_e4575ca9c11c283ca69f84d7d0a7e836.bundle",
+      "size": 191600643,
+      "sha256": "1dac3aa183ee8ece987fc6313ced7adc391bbdd68b74e03c76dd7a9f8111eb1d",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_04-01-aircontroltutorial2_e4575ca9c11c283ca69f84d7d0a7e836.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_04-01-aircontroltutorial2_e4575ca9c11c283ca69f84d7d0a7e836.bundle.part001.bin",
+          "size": 91985923
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_05-00-4floors_2230dc793fdec523f16d622c8eabf214.bundle",
+      "size": 99990864,
+      "sha256": "bfed759a6b12f08589494e2424cd0cd1ad6393cfc138e9abd3a0e7a1c35bced2",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_05-00-4floors_2230dc793fdec523f16d622c8eabf214.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_05-00-4floors_2230dc793fdec523f16d622c8eabf214.bundle.part001.bin",
+          "size": 376144
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_05-01-ovals_4d8c14539556c167c47fe018fd5426f1.bundle",
+      "size": 187202383,
+      "sha256": "5bd2846e4728c61e69e30e2e8fac0cdf9372ec5cbc23f65c5a571568f1b70bd9",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_05-01-ovals_4d8c14539556c167c47fe018fd5426f1.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_05-01-ovals_4d8c14539556c167c47fe018fd5426f1.bundle.part001.bin",
+          "size": 87587663
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-00-transitionsection_3f6d8c33009a06f1c97fa191a3bedb5b.bundle",
+      "size": 49302346,
+      "sha256": "34baf9197fb62e52397f6558182015c36c6cfab1186b926bf9513919500c26d6",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-00-transitionsection_3f6d8c33009a06f1c97fa191a3bedb5b.bundle",
+          "size": 49302346
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-01-giantwheel_2b9e315c77ca36207b23f1f96dc2edcc.bundle",
+      "size": 397887485,
+      "sha256": "25021ee0d432352dc003536a22ce70832da318abcbac0090b6748a0d118fc507",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-01-giantwheel_2b9e315c77ca36207b23f1f96dc2edcc.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-01-giantwheel_2b9e315c77ca36207b23f1f96dc2edcc.bundle.part001.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-01-giantwheel_2b9e315c77ca36207b23f1f96dc2edcc.bundle.part002.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-01-giantwheel_2b9e315c77ca36207b23f1f96dc2edcc.bundle.part003.bin",
+          "size": 99043325
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-02-bumpers_9001e04060c1a59e12d16e19ed159a7b.bundle",
+      "size": 160595853,
+      "sha256": "fd0e8c83d9af80d4084a4a0c1862f2c23cc94479583ab4cc298c378512ab86be",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-02-bumpers_9001e04060c1a59e12d16e19ed159a7b.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_06-02-bumpers_9001e04060c1a59e12d16e19ed159a7b.bundle.part001.bin",
+          "size": 60981133
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-00-transitionsection_f96d90153354c0627e64faeb3dc491fc.bundle",
+      "size": 316623807,
+      "sha256": "40e914a6a943ba3b204e2e9a1c2497329418f73af9413756c669e7c02bd948f7",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-00-transitionsection_f96d90153354c0627e64faeb3dc491fc.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-00-transitionsection_f96d90153354c0627e64faeb3dc491fc.bundle.part001.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-00-transitionsection_f96d90153354c0627e64faeb3dc491fc.bundle.part002.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-00-transitionsection_f96d90153354c0627e64faeb3dc491fc.bundle.part003.bin",
+          "size": 17779647
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-01-brownpyramid_33d3b306dc0801f50ea4bfae02c85034.bundle",
+      "size": 205096868,
+      "sha256": "924b6d1588f80805fb407fbb373c80e56188eb921ea4e6560c4af863e9a81710",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-01-brownpyramid_33d3b306dc0801f50ea4bfae02c85034.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-01-brownpyramid_33d3b306dc0801f50ea4bfae02c85034.bundle.part001.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-01-brownpyramid_33d3b306dc0801f50ea4bfae02c85034.bundle.part002.bin",
+          "size": 5867428
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-02-brownramp_c089bb721b7e710aef4556654c234096.bundle",
+      "size": 135926149,
+      "sha256": "a06f62e78c15f39ff29ccd9c9778f2b6e8ec61fefeef6d9e718b3a3c6b82634d",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-02-brownramp_c089bb721b7e710aef4556654c234096.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-02-brownramp_c089bb721b7e710aef4556654c234096.bundle.part001.bin",
+          "size": 36311429
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-03-bigjump_feee0bf02e64d7207dd45164c0255ae7.bundle",
+      "size": 170098415,
+      "sha256": "f52b93cd4642f86ce129df4407d55910341452e7cd563bf0a9a5807e8646fbbe",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-03-bigjump_feee0bf02e64d7207dd45164c0255ae7.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_07-03-bigjump_feee0bf02e64d7207dd45164c0255ae7.bundle.part001.bin",
+          "size": 70483695
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-00-transitionsection_8f17566183527e2f561510adea8ff88b.bundle",
+      "size": 75461721,
+      "sha256": "279c4da7f8b81a4f275da1e300145916f330146b5738868a13edb9df9221d5bc",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-00-transitionsection_8f17566183527e2f561510adea8ff88b.bundle",
+          "size": 75461721
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-01-towerleft_lower_2c694924dca1b7136edfa9d57f9e297c.bundle",
+      "size": 153887186,
+      "sha256": "c077165cc2a99267952b7a070ab0cfdebf59cc447e9e910e7eadf31d1ed68c91",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-01-towerleft_lower_2c694924dca1b7136edfa9d57f9e297c.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-01-towerleft_lower_2c694924dca1b7136edfa9d57f9e297c.bundle.part001.bin",
+          "size": 54272466
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-02-towerright_ca360a83a26e0b475b92b32d07579cbb.bundle",
+      "size": 152948089,
+      "sha256": "1d45b80c17b65d1d0e087469fe732ce663c876915e47369cf4f1df32b938b140",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-02-towerright_ca360a83a26e0b475b92b32d07579cbb.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-02-towerright_ca360a83a26e0b475b92b32d07579cbb.bundle.part001.bin",
+          "size": 53333369
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-03-towerleft_upper_c3681ef29b2d7bc8805b1deddb54c5e2.bundle",
+      "size": 141450911,
+      "sha256": "784006e3e2e8dbbcce55265e2c14d60f912e8df58fb79eba9439402ddf8f6597",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-03-towerleft_upper_c3681ef29b2d7bc8805b1deddb54c5e2.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-03-towerleft_upper_c3681ef29b2d7bc8805b1deddb54c5e2.bundle.part001.bin",
+          "size": 41836191
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-04-ceo_office_c3ff31e5412dc0430cf496f17a26364f.bundle",
+      "size": 223641202,
+      "sha256": "7ea66b16d219f71071c4339505c9167f23628b270e57b31dfb674c88c159852e",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-04-ceo_office_c3ff31e5412dc0430cf496f17a26364f.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-04-ceo_office_c3ff31e5412dc0430cf496f17a26364f.bundle.part001.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-04-ceo_office_c3ff31e5412dc0430cf496f17a26364f.bundle.part002.bin",
+          "size": 24411762
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-05-space_e0360390467de0e107bba19d0b064098.bundle",
+      "size": 109302092,
+      "sha256": "3376b5710ae1fb838afdea38724268b304efba3fd378f295a9edf7a5c97acb94",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-05-space_e0360390467de0e107bba19d0b064098.bundle.part000.bin",
+          "size": 99614720
+        },
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-05-space_e0360390467de0e107bba19d0b064098.bundle.part001.bin",
+          "size": 9687372
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-06-towerinvisiblecol_ec9f8b5f4da5953178b6b24ac3482a87.bundle",
+      "size": 6911411,
+      "sha256": "00cfc38bddbcf3a68c00f52803b17d4826d59be7780e2236d168dd600551bff3",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_08-06-towerinvisiblecol_ec9f8b5f4da5953178b6b24ac3482a87.bundle",
+          "size": 6911411
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_09-00-satellite_83b4e3c7d27567593c562d6e77120b04.bundle",
+      "size": 82829685,
+      "sha256": "bfe1d42e98715a32a13f22fc2b13e5016c856232d4c912449869f6ee5417f159",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_09-00-satellite_83b4e3c7d27567593c562d6e77120b04.bundle",
+          "size": 82829685
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_09-01-moonbase_11afe61c845d91c0707184bbd44d1718.bundle",
+      "size": 42835134,
+      "sha256": "d5e0b3c642bd504b0fac5414f0172a95570f6c1cbbd469521e8c3f9d665b7380",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_09-01-moonbase_11afe61c845d91c0707184bbd44d1718.bundle",
+          "size": 42835134
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_09-02-moon_36abe6b75facda111884491e1acb439f.bundle",
+      "size": 4883580,
+      "sha256": "4d2653399f1d16a02398a6b5210ad83893b0210d70d204db17297807548a31a6",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_main_section_09-02-moon_36abe6b75facda111884491e1acb439f.bundle",
+          "size": 4883580
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_playeressentials_ddbc7e430f85e9357bcc1a2423943ad7.bundle",
+      "size": 68060036,
+      "sha256": "a6ad34efbb599e3de9830bc98747e2efa11e23dadc399b0c86184ee0e1569635",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_playeressentials_ddbc7e430f85e9357bcc1a2423943ad7.bundle",
+          "size": 68060036
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_09_spiralslingshots_8247ebc912d6bc00f99e05cf80852cf9.bundle",
+      "size": 4478536,
+      "sha256": "42c68096ef996bdf11d9b7f813e8d3da2102223e945de071343e311e2782d131",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_09_spiralslingshots_8247ebc912d6bc00f99e05cf80852cf9.bundle",
+          "size": 4478536
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_10_halfpipeslingshots_9974867106548df8d40c7c43bd909920.bundle",
+      "size": 7280875,
+      "sha256": "6e67baf86fc4ce969dd923d81b4d145d8e97128dba3ee1998d750d0753ec872c",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_10_halfpipeslingshots_9974867106548df8d40c7c43bd909920.bundle",
+          "size": 7280875
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_11_walljumppads_a81f41df266141a555616814d55ca5d2.bundle",
+      "size": 3003477,
+      "sha256": "268b442a8c671df90fa916cc8eeba88f495d9a25ab8fdc1c21ce409e0afca3e8",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_11_walljumppads_a81f41df266141a555616814d55ca5d2.bundle",
+          "size": 3003477
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_12_spiral_4b321d82efd6c568fb8efeb5bbc37ca0.bundle",
+      "size": 186955,
+      "sha256": "9e08d3db4e879be9c5a34ce6bed22739e04f485a0f4ffe4d890da9b89fd64ff7",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_12_spiral_4b321d82efd6c568fb8efeb5bbc37ca0.bundle",
+          "size": 186955
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_14_pendulumexperiment_368eda0683cb0c3579bafddcc1737bb4.bundle",
+      "size": 4414670,
+      "sha256": "6b461b72da5b7d2ad49d759f82396522588c80f32684897da9a437759085955a",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_14_pendulumexperiment_368eda0683cb0c3579bafddcc1737bb4.bundle",
+          "size": 4414670
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_15_giantswing_65b0eec3e3fd98e7a2221b194a43c893.bundle",
+      "size": 4401127,
+      "sha256": "d445f2ef9fd1e5dbc15d1a8cde057ee66cb96c64c60d342251523175989080a5",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_15_giantswing_65b0eec3e3fd98e7a2221b194a43c893.bundle",
+          "size": 4401127
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_16_rotatingtube2_02aa2f8577fb809751d6289a7869f0fa.bundle",
+      "size": 135972,
+      "sha256": "03f19d828ec4e24d1b093b3e9d06d51611cdded1dec40868bda0a53da54c3023",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_16_rotatingtube2_02aa2f8577fb809751d6289a7869f0fa.bundle",
+          "size": 135972
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_16_rotatingtube_bc59e73776bf37a0958df633edc8b32a.bundle",
+      "size": 181747,
+      "sha256": "27af00e4ad51b2d9ebc9e2c1174f5b0636ca1dac9bdbabc522747e34c3423ee2",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protochallenger_section_16_rotatingtube_bc59e73776bf37a0958df633edc8b32a.bundle",
+          "size": 181747
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_00_easy_b310ebfdb345b05855dcac048bbd432b.bundle",
+      "size": 267023,
+      "sha256": "2de928b89bbdc861fc9d172c9f8d596d8def4597d711e4c84aa3ba097a3c3274",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_00_easy_b310ebfdb345b05855dcac048bbd432b.bundle",
+          "size": 267023
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_01_walls_84452479b3c9f8e18f523eff59b5582a.bundle",
+      "size": 161301,
+      "sha256": "a8affb206c8de0c7d660376fb322cd89ffd3a9019502c63a0f32e27a318b27e1",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_01_walls_84452479b3c9f8e18f523eff59b5582a.bundle",
+          "size": 161301
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_02_rotatingworld_ef32af79974e358aeceebe67713d76b4.bundle",
+      "size": 179997,
+      "sha256": "f62bb64a9f84b45ba9917c91f8c63a1d7b67a5c1deaec7afb278db5820fa9d26",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_02_rotatingworld_ef32af79974e358aeceebe67713d76b4.bundle",
+          "size": 179997
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_03_01_walltapeasy_d5637bb0aeac84d2db6a2e15bbccc9b5.bundle",
+      "size": 242123,
+      "sha256": "9fab5275a678b4cad6e0a9d8d1f62148c596c9ccb33acb1578b997f3551b10b4",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_03_01_walltapeasy_d5637bb0aeac84d2db6a2e15bbccc9b5.bundle",
+          "size": 242123
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_03_02_walltap_fa11e7b6492cd8336e0c204e5f218366.bundle",
+      "size": 122373,
+      "sha256": "42b9d938180122a8b19c38f14efa3aa5b54cb4b61e74306405b5d033172ff715",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_03_02_walltap_fa11e7b6492cd8336e0c204e5f218366.bundle",
+          "size": 122373
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_04_backentry_easier_ed0d87d58c4b50c405454da463659909.bundle",
+      "size": 41684923,
+      "sha256": "09a1e869a245b698e0d8c9af0cab120c72ae1cffe63772e558f5f6e71bee3752",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_04_backentry_easier_ed0d87d58c4b50c405454da463659909.bundle",
+          "size": 41684923
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_05_backentry_bd8c4eef63f59b5fe14d55349dc8854c.bundle",
+      "size": 41657745,
+      "sha256": "a9c3ec7fd381506299bdf8157de4b8d608d9a35f7efaeb646957d6a69c3dc6dd",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_05_backentry_bd8c4eef63f59b5fe14d55349dc8854c.bundle",
+          "size": 41657745
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_06_halfpipes_8f52c7f8d881d4536a63c51e206b628b.bundle",
+      "size": 287920,
+      "sha256": "9b5e15dbfe44ba153b17e5606314c781dc6ff8955fe4f784ddc91d2d2191e092",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/aa/WebGL/gtw_scenes_scenes_protodoink_section_06_halfpipes_8f52c7f8d881d4536a63c51e206b628b.bundle",
+          "size": 287920
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/Ambient.bank",
+      "size": 73628096,
+      "sha256": "38037c402e105601945dc18ca8e395f535fe2e36a6df84c8f49a5c7a79ced784",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/Ambient.bank",
+          "size": 73628096
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/Dialogue.bank",
+      "size": 35790848,
+      "sha256": "e9f02cf5920d37b7be7d551231c18bd804dc1bd3e6ce61d158bf498c68f4edd7",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/Dialogue.bank",
+          "size": 35790848
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/Master.bank",
+      "size": 192832,
+      "sha256": "be98ff80aeaa5f9bebdfc272138b0a897adb4b5ab04063b350bf978023746c63",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/Master.bank",
+          "size": 192832
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/Master.strings.bank",
+      "size": 16772,
+      "sha256": "fcaa0533c0b4b59828984db93def13b05c9728978d6574d3d33d67f0530b66b0",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/Master.strings.bank",
+          "size": 16772
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/Music.bank",
+      "size": 2174400,
+      "sha256": "0efdf02726ced9d211b5918458009be02a76cef8647d2d03008e249db92154b0",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/Music.bank",
+          "size": 2174400
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/Podcasts.bank",
+      "size": 2201728,
+      "sha256": "b8c7ca777d61ae11f3083393c7a61448e14793f00ec9a10d82c959e70057d44e",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/Podcasts.bank",
+          "size": 2201728
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/SFX.bank",
+      "size": 3044224,
+      "sha256": "e805b8f3041ad846c271f467b4e6fc0c02ea1dd56fad34f67c0e88240c87f397",
+      "type": "application/octet-stream",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/SFX.bank",
+          "size": 3044224
+        }
+      ]
+    },
+    {
+      "path": "build/StreamingAssets/UnityServicesProjectConfiguration.json",
+      "size": 985,
+      "sha256": "d6c1c6ef8444e605b952e548b7479bd8f6c012de1a332ea3ff1c353c0cfd76e3",
+      "type": "application/json",
+      "parts": [
+        {
+          "url": "build/StreamingAssets/UnityServicesProjectConfiguration.json",
+          "size": 985
+        }
+      ]
+    }
+  ],
+  "totalBytes": 5702014831
+}
