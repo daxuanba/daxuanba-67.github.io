@@ -30,7 +30,37 @@
   // `Access-Control-Allow-Origin: *` (Release assets do NOT, so fetch() to a
   // release URL dies with a CORS error even though curl works fine).
   // Empty string => same origin (everything in one repo).
-  var DATA_BASE = 'https://raw.githubusercontent.com/daxuanba/daxuanba-67.github.io/data/';
+  var DATA_BASE = '';  /* GTW multi-shard cloud: routing via SHARD_URLS */
+  var SHARD_URLS = [
+    'https://gtw-p00.app.workbuddy.host',
+    'https://gtw-p01.app.workbuddy.host',
+    'https://gtw-p02.app.workbuddy.host',
+    'https://gtw-p03.app.workbuddy.host',
+    'https://gtw-p04.app.workbuddy.host',
+    'https://gtw-p05.app.workbuddy.host',
+    'https://gtw-p06.app.workbuddy.host',
+    'https://gtw-p07-05197.app.workbuddy.host',
+    'https://gtw-p08.app.workbuddy.host',
+    'https://gtw-p09.app.workbuddy.host',
+    'https://gtw-p10.app.workbuddy.host',
+    'https://gtw-p11.app.workbuddy.host',
+    'https://gtw-p12.app.workbuddy.host',
+    'https://gtw-p13.app.workbuddy.host',
+    'https://gtw-p14.app.workbuddy.host',
+    'https://gtw-p15.app.workbuddy.host',
+    'https://gtw-p16.app.workbuddy.host',
+    'https://gtw-p17.app.workbuddy.host',
+    'https://gtw-p18.app.workbuddy.host',
+    'https://gtw-p19.app.workbuddy.host',
+    'https://gtw-p20.app.workbuddy.host',
+    'https://gtw-p21.app.workbuddy.host',
+    'https://gtw-p22.app.workbuddy.host',
+    'https://gtw-p23.app.workbuddy.host',
+    'https://gtw-p24.app.workbuddy.host',
+    'https://gtw-p25.app.workbuddy.host',
+    'https://gtw-p26.app.workbuddy.host'
+  ];
+  function hashStr(s){var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
 
   // path -> entry, only for files that were split (parts.length > 1)
   var partMap = {};
@@ -38,8 +68,9 @@
 
   /** Re-root a manifest-relative url onto the data host when one is configured. */
   function resolveUrl(u) {
-    if (!DATA_BASE || /^https?:/i.test(u) || /^blob:/i.test(u)) return u;
-    return DATA_BASE + String(u).replace(/^\/+/, '');
+    if (/^https?:/i.test(u) || /^blob:/i.test(u)) return u;
+    var key = String(u).replace(/^\/+/, '');
+    return SHARD_URLS[hashStr(key) % SHARD_URLS.length] + '/' + key;
   }
 
   function log() {
@@ -380,7 +411,7 @@
           return prepareCore(manifest, onStage, onProgress).then(function (prep) {
           state.blobUrls = prep.blobUrls;
           // A core artefact that was NOT split lives on the data host too.
-          var coreUrl = function (p) { return prep.map[p] || (DATA_BASE ? DATA_BASE + p : p); };
+          var coreUrl = function (p) { return prep.map[p] || resolveUrl(p); };
           var cfg = {
             dataUrl: coreUrl(u.dataUrl),
             frameworkUrl: coreUrl(u.frameworkUrl),
